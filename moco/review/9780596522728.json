@@ -1,0 +1,16 @@
+{
+  "books": [
+    {
+      "id": 7244453,
+      "isbn": "059652272X",
+      "isbn13": "9780596522728",
+      "ratings_count": 26,
+      "reviews_count": 82,
+      "text_reviews_count": 0,
+      "work_ratings_count": 34,
+      "work_reviews_count": 106,
+      "work_text_reviews_count": 0,
+      "average_rating": "3.21"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "Error": "0",
+  "Time": 0.0045,
+  "Total": "106",
+  "Page": 1,
+  "Books": [
+    {
+      "ID": 3891013312,
+      "Title": "Programming Google App Engine",
+      "SubTitle": "Build and Run Scalable Web Apps on Google's Infrastructure",
+      "Description": "As one of today's cloud computing services, Google App Engine does more than provide access to a large system of servers. It also offers you a simple model for building applications that scale automatically to accommodate millions of users. With Prog ...",
+      "Image": "http://s.it-ebooks-api.info/3/programming_google_app_engine.jpg",
+      "isbn": "9780596522728"
+    },
+    {
+      "ID": 2282307246,
+      "Title": "Google Power Search",
+      "SubTitle": "The Essential Guide to Finding Anything Online with Google",
+      "Description": "Behind Google's deceptively simple interface is immense power for both market and competitive research - if you know how to use it well. Sure, basic searches are easy, but complex searches require specialized skills. This concise book takes you throu ...",
+      "Image": "http://s.it-ebooks-api.info/3/google_power_search.jpg",
+      "isbn": "9781449311568"
+    },
+    {
+      "ID": 1172198695,
+      "Title": "Google Script: Enterprise Application Essentials",
+      "SubTitle": "Adding Functionality to Your Google Apps",
+      "Description": "How can you extend Google Apps to fit your organization’s needs? This concise guide shows you how to use Google Scripts, the JavaScript-based language that provides a complete web-based development platform-with no downloads, configuration, or comp ...",
+      "Image": "http://s.it-ebooks-api.info/3/google_script_enterprise_application_essentials.jpg",
+      "isbn": "9781449318529"
+    },
+    {
+      "ID": 1439505327,
+      "Title": "Developing with Google+",
+      "SubTitle": "Practical Guide to the Google+ Platform",
+      "Description": "Would you like to integrate Google+ with an existing website, or build your own social application on the platform? Developing with Google+ takes you on a tour of the Google+ APIs, with lots of concrete examples and hands-on projects. You'll learn ho ...",
+      "Image": "http://s.it-ebooks-api.info/3/developing_with_google.jpg",
+      "isbn": "9781449312268"
+    },
+    {
+      "ID": 2897120742,
+      "Title": "Programming Google App Engine, 2nd Edition",
+      "SubTitle": "Build & Run Scalable Web Applications on Google's Infrastructure",
+      "Description": "Google App Engine makes it easy to create a web application that can serve millions of people as easily as serving hundreds, with minimal up-front investment. With Programming Google App Engine, Google engineer Dan Sanderson provides practical guidan ...",
+      "Image": "http://s.it-ebooks-api.info/3/programming_google_app_engine_2nd_edition.jpg",
+      "isbn": "9781449398262"
+    },
+    {
+      "ID": 3386159233,
+      "Title": "Google Visualization API Essentials",
+      "SubTitle": "Make sense of your data: make it visual with the Google Visualization API",
+      "Description": "There's a lot of data in our world, and visual representations are often the best method of making sense of it all. Yet, it should not take an army of programmers and analysts to create visualizations in order to make data useful. The Google Visualiz ...",
+      "Image": "http://s.it-ebooks-api.info/14/google_visualization_api_essentials.jpg",
+      "isbn": "9781849694360"
+    },
+    {
+      "ID": 2993598198,
+      "Title": "Learning Google Guice",
+      "SubTitle": "Utilize dependency injection to develop applications quickly and efficiently using Google Guice",
+      "Description": "Google Guice is an open source software framework for the Java platform released by Google under the Apache License. It provides support for dependency injection using annotations to configure Java objects.\n\nLearning Google Guice is a concise, hand ...",
+      "Image": "http://s.it-ebooks-api.info/14/learning_google_guice.jpg",
+      "isbn": "9781783281893"
+    },
+    {
+      "ID": 1905783312,
+      "Title": "Google Maps JavaScript API Cookbook",
+      "SubTitle": "Over 50 recipes to help you create web maps and GIS web applications using the Google Maps JavaScript API",
+      "Description": "Day by day, the use of location data is becoming more and more popular, and Google is one of the main game changers in this area. The Google Maps JavaScript API is one of the most functional and robust mapping APIs used among Geo developers. With Goo ...",
+      "Image": "http://s.it-ebooks-api.info/14/google_maps_javascript_api_cookbook.jpg",
+      "isbn": "9781849698825"
+    },
+    {
+      "ID": 3847998489,
+      "Title": "Code in the Cloud",
+      "SubTitle": "Programming Google AppEngine",
+      "Description": "Join the next wave of Web 2.0 software development in the cloud! Cloud applications are the next big shift in application development: instead of building single-user applications to run on a personal computer, new applications are being built as mul ...",
+      "Image": "http://s.it-ebooks-api.info/1/code_in_the_cloud.jpg",
+      "isbn": "9781934356630"
+    },
+    {
+      "ID": 1548098294,
+      "Title": "Google Maps API, 2nd Edition",
+      "SubTitle": "Adding Where to Your Applications",
+      "Description": "This is the second edition of this Friday, which has been rewritten to use the Google Maps V2 API. ...",
+      "Image": "http://s.it-ebooks-api.info/1/google_maps_api_2nd_edition.jpg",
+      "isbn": "0"
+    }
+  ]
+}

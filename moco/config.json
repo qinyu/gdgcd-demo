@@ -1,0 +1,26 @@
+[
+  {
+    "request": {
+      "uri": "/search/google"
+    },
+    "response": {
+      "file": "book/book.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/review_counts.json?isbns[]=0"
+    },
+    "response": {
+      "file": "review/0.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/review_counts.json?isbns[]=9780596522728"
+    },
+    "response": {
+      "file": "review/9780596522728.json"
+    }
+  }
+]
