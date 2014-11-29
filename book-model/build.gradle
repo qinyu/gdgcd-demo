@@ -1,0 +1,28 @@
+buildscript {
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:2.4.1'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'retrolambda'
+
+retrolambda {
+    oldJdk "/Users/twer/.jenv/versions/oracle64-1.7.0.51"
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.squareup.retrofit:retrofit:1.7.1'
+    compile 'com.netflix.rxjava:rxjava-core:0.20.6'
+    compile 'com.netflix.rxjava:rxjava-android:0.20.6'
+    testCompile 'junit:junit:4.12-beta-3'
+    compile 'com.squareup.dagger:dagger:1.2.2'
+    compile 'com.squareup.dagger:dagger-compiler:1.2.2'
+    testCompile 'org.mockito:mockito-all:1.10.8'
+}
+

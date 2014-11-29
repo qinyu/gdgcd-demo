@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="96dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        tools:src="@drawable/osgi_in_action"
+        android:elevation="2dp"
+        android:contentDescription="@string/book_cover" />
+
+    <TextView
+        android:id="@+id/title"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/cover"
+        android:ellipsize="marquee"
+        android:singleLine="false"
+        android:paddingTop="8dp"
+        tools:text="Test book name which is really long to fit in single line"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/cover"
+        android:layout_alignParentEnd="true"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        tools:text="4.7"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+</RelativeLayout>

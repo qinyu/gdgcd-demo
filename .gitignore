@@ -24,3 +24,11 @@ proguard/
 
 # Log Files
 *.log
+
+/.idea
+.DS_Store
+*.iml
+.java-version
+screenshot_*.png
+/test_servers/
+
