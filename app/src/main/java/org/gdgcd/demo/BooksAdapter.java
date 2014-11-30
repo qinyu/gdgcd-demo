@@ -47,12 +47,6 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         viewHolder.title.setText(book.title);
 
         viewHolder.ratingSub.unsubscribe();
-
-        viewHolder.ratingSub = book.rating
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(viewHolder.rating::setText,
-                        Throwable::printStackTrace);
     }
 
     @Override

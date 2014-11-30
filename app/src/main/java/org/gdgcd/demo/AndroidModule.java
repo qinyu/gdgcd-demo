@@ -1,14 +1,13 @@
 package org.gdgcd.demo;
 
 import org.gdgcd.demo.service.BookServiceModule;
-import org.gdgcd.demo.service.ReviewServiceModule;
 
 import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
 
-@Module(includes = {ReviewServiceModule.class, BookServiceModule.class})
+@Module(includes = {BookServiceModule.class})
 public class AndroidModule {
 
     @Provides
@@ -17,9 +16,4 @@ public class AndroidModule {
         return BuildConfig.BOOK_SERVICE_ENDPOINT;
     }
 
-    @Provides
-    @Named("review service")
-    String provideReviewServiceEndpoint() {
-        return BuildConfig.REVIEW_SERVICE_ENDPOINT;
-    }
 }

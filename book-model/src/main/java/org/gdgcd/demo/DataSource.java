@@ -3,7 +3,6 @@ package org.gdgcd.demo;
 import org.gdgcd.demo.domain.Book;
 import org.gdgcd.demo.service.BookMeta;
 import org.gdgcd.demo.service.BookService;
-import org.gdgcd.demo.service.ReviewService;
 
 import javax.inject.Inject;
 
@@ -11,8 +10,6 @@ import rx.Observable;
 
 public class DataSource {
 
-    @Inject
-    ReviewService reviewService;
     @Inject
     BookService bookService;
 
@@ -28,16 +25,14 @@ public class DataSource {
                     }
                     return observable;
                 })
-                .map(bookMeta -> buildBook(reviewService, bookMeta));
+                .map(this::buildBook);
     }
 
-    Book buildBook(ReviewService reviewService, BookMeta bookMeta) {
+    Book buildBook(BookMeta bookMeta) {
         Book book = new Book();
         book.title = bookMeta.getTitle();
         book.imageUrl = bookMeta.getImage();
         book.description = bookMeta.getDescription();
-        book.rating = reviewService.getReview(bookMeta.getIsbn()).flatMap(envelope -> Observable.from(envelope.getBookReviews()))
-                .map(reviewMeta -> reviewMeta.getAverageRating());
         return book;
     }
 }
