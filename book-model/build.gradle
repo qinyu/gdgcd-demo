@@ -11,10 +11,6 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'retrolambda'
 
-retrolambda {
-    oldJdk "/Users/twer/.jenv/versions/oracle64-1.7.0.51"
-}
-
 test {
     outputs.upToDateWhen { false }
 }
