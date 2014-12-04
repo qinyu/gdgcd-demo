@@ -37,8 +37,8 @@ android {
         mock.initWith(buildTypes.debug)
 
         mock {
-            buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://192.168.56.1:9000"'
-            buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://192.168.56.1:9000"'
+            buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://10.0.2.2:9000"'
+            buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://10.0.2.2:9000"'
         }
     }
 
