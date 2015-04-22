@@ -9,7 +9,7 @@
         android:name=".BooksApplication"
         android:theme="@style/AppTheme">
         <activity
-            android:name="org.gdgcd.demo.BooksActivity"
+            android:name="org.gdgcd.demo.SearchActivity"
             android:label="@string/title_activity_books">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

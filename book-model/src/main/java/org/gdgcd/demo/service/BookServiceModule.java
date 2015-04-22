@@ -1,22 +1,34 @@
 package org.gdgcd.demo.service;
 
-import org.gdgcd.demo.DataSource;
-import org.gdgcd.demo.service.BookService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.module.kotlin.KotlinModule;
 
-import javax.inject.Inject;
+import org.gdgcd.demo.SearchEngine;
+
 import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import retrofit.Endpoint;
 import retrofit.RestAdapter;
+import retrofit.android.AndroidLog;
+import retrofit.converter.JacksonConverter;
 
-@Module (injects= {DataSource.class}, complete = false)
+@Module(injects = {SearchEngine.class}, complete = false)
 public class BookServiceModule {
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     BookService provideBookService(@Named("book service") String endpoint) {
-        return new RestAdapter.Builder().setEndpoint(endpoint).build().create(BookService.class);
+        final ObjectMapper objectMapper = new ObjectMapper().registerModule(new KotlinModule())
+                .setPropertyNamingStrategy(PropertyNamingStrategy.PASCAL_CASE_TO_CAMEL_CASE);
+
+
+        return new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setLog(new AndroidLog("page"))
+                .setConverter(new JacksonConverter(objectMapper))
+                .setEndpoint(endpoint).build().create(BookService.class);
     }
 }

@@ -7,5 +7,9 @@ import rx.Observable;
 public interface BookService {
     @GET("/search/{query}")
     public Observable<BookMetaEnvelope> getBooks(@Path("query") String query);
+
+
+    @GET("/search/{query}")
+    public BookMetaEnvelope getSync(@Path("query") String query);
 }
 

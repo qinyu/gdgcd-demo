@@ -6,9 +6,7 @@ import java.util.Arrays;
 
 import dagger.ObjectGraph;
 
-/**
- * Created by twer on 11/26/14.
- */
+
 public class BooksApplication extends Application {
 
     private ObjectGraph objectGraph;
