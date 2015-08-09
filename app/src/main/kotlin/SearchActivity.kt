@@ -62,12 +62,9 @@ public class SearchActivity : ActionBarActivity() {
         subject.debounce(1000, TimeUnit.MILLISECONDS)
                 .distinctUntilChanged()
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(engine.search)
-                .su
                 .subscribe {
                     str ->
                     Log.d("OpenParty", "str:${str}")
-
 
                     engine.search(str).subscribe {
                         book ->

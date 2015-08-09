@@ -13,9 +13,9 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
-test {
-    outputs.upToDateWhen { false }
-}
+//test {
+//    outputs.upToDateWhen { false }
+//}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
