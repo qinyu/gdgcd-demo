@@ -1,16 +1,4 @@
-buildscript {
-    ext.kotlin_version = '0.12.1230'
-
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 22
@@ -38,8 +26,8 @@ android {
         mock.initWith(buildTypes.debug)
 
         mock {
-            buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://10.0.2.2:9000"'
-            buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://10.0.2.2:9000"'
+            buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://192.168.58.1:9000"'
+            buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://192.168.58.1:9000"'
         }
     }
 
@@ -58,9 +46,6 @@ android {
         exclude 'META-INF/NOTICE'
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
 }
 
 repositories {
@@ -76,12 +61,12 @@ dependencies {
     compile 'com.android.support:cardview-v7:22.2.1'
     compile 'com.android.support:palette-v7:22.2.1'
     compile 'com.jakewharton:butterknife:6.0.0'
-    compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
     compile 'com.squareup.picasso:picasso:2.4.0'
-    compile 'org.jetbrains.anko:anko:0.5-15'
-    compile 'io.reactivex:rxjava:1.0.9'
-    compile 'io.reactivex:rxandroid:0.24.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+
+
     compile project(':book-model')
 }
 

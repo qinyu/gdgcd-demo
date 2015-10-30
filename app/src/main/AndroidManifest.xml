@@ -2,14 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.gdgcd.demo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".BooksApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:name=".BooksApplication"
         android:theme="@style/AppTheme">
         <activity
-            android:name="org.gdgcd.demo.SearchActivity"
+            android:name=".activity.BooksActivity"
             android:label="@string/title_activity_books">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,5 +20,4 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>

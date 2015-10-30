@@ -2,7 +2,7 @@ package org.gdgcd.demo;
 
 import android.app.Application;
 
-import java.util.Arrays;
+import org.gdgcd.demo.module.AndroidModule;
 
 import dagger.ObjectGraph;
 

@@ -1,5 +1,6 @@
-package org.gdgcd.demo;
+package org.gdgcd.demo.module;
 
+import org.gdgcd.demo.BuildConfig;
 import org.gdgcd.demo.service.BookServiceModule;
 
 import javax.inject.Named;

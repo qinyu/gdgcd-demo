@@ -5,8 +5,6 @@ import org.gdgcd.demo.service.BookMeta;
 import org.gdgcd.demo.service.BookMetaEnvelope;
 import org.gdgcd.demo.service.BookService;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import rx.Observable;
@@ -18,24 +16,19 @@ public class SearchEngine {
     BookService bookService;
 
     public Observable<Book> search(String query) {
-        return bookService.getBooks(query).flatMap(new Func1<BookMetaEnvelope, Observable<BookMeta>>() {
-            @Override
-            public Observable<BookMeta> call(BookMetaEnvelope bookMetaEnvelope) {
-                final List<BookMeta> books = bookMetaEnvelope.getBooks();
-                return Observable.from(books);
-
-            }
-        }).map(new Func1<BookMeta, Book>() {
-            @Override
-            public Book call(BookMeta bookMeta) {
-                return buildBook(bookMeta);
-            }
-        });
-    }
-
-
-    public Observable<BookMetaEnvelope> search1(String query) {
-        return bookService.getBooks(query);
+        return bookService.getBooks(query)
+                .flatMap(new Func1<BookMetaEnvelope, Observable<BookMeta>>() {
+                    @Override
+                    public Observable<BookMeta> call(BookMetaEnvelope bookMetaEnvelope) {
+                        return Observable.from(bookMetaEnvelope.getBooks());
+                    }
+                })
+                .map(new Func1<BookMeta, Book>() {
+                    @Override
+                    public Book call(BookMeta bookMeta) {
+                        return buildBook(bookMeta);
+                    }
+                });
     }
 
     public static Book buildBook(BookMeta bookMeta) {
