@@ -31,11 +31,12 @@ public class SearchEngine {
                 });
     }
 
-    public static Book buildBook(BookMeta bookMeta) {
+    static Book buildBook(BookMeta bookMeta) {
         Book book = new Book();
-        book.title = bookMeta.getTitle();
+        book.title = bookMeta.getTitle().trim();
         book.imageUrl = bookMeta.getImage();
         book.description = bookMeta.getDescription();
         return book;
     }
+
 }

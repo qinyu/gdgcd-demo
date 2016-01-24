@@ -1,0 +1,4 @@
+[caps]
+platformName = "android"
+app = "./app/build/outputs/apk/app-debug.apk"
+deviceName = "192.168.58.101:5555"

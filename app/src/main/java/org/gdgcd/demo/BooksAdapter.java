@@ -39,7 +39,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         Book book = books.get(position);
         Picasso.with(viewHolder.context)
                 .load(book.imageUrl)
-                .tag(viewHolder.context)
+                .tag(viewHolder.context.getApplicationContext())
                 .into(viewHolder.coverImage);
         viewHolder.title.setText(book.title);
 
