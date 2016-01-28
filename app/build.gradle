@@ -17,6 +17,12 @@ android {
             buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://192.168.58.1:9000"'
             buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://192.168.58.1:9000"'
         }
+
+        workShop {
+            buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://172.16.76.138:9000"'
+            buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://172.16.76.138:9000"'
+        }
+
         product {
             buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://it-ebooks-api.info/v1/"'
             buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://www.goodreads.com/book"'
