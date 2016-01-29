@@ -27,11 +27,8 @@ def after_all(context):
 
 
 def before_scenario(context: runner.Context, scenario):
-    try:
-        context.driver.launch_app()
-    except WebDriverException:
-        return
+    context.driver.start_activity("org.gdgcd.demo", ".activity.BooksActivity")
 
 
 def after_scenario(context: runner.Context, scenario):
-    context.driver.close_app()
+    pass
