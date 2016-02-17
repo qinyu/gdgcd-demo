@@ -17,14 +17,21 @@ def step_impl(context: runner.Context):
 @given(u'I wait the book list loading finishes')
 def step_impl(context: runner.Context):
     driver = context.driver  # type: WebDriver
+
+
+
     search = driver.find_element_by_id("search")
     search.click()
     search.send_keys("google")
+
+
 
     def xx(driver):
         return driver.find_elements_by_id("title")
 
     els = WebDriverWait(driver, 5).until(xx)
+
+    driver.implicitly_wait(5)
     # els = driver.find_elements_by_id("title")
     ok_(len(els) > 0)
 
@@ -39,11 +46,16 @@ def step_impl(context):
 @when(u'I scroll down to the list bottom')
 def step_impl(context):
     driver = context.driver  # type: WebDriver
+
+
+    driver.swipe(75, 1600, 75, 200, 400)
     driver.swipe(75, 1600, 75, 200, 400)
 
 
 @then(u'I see "Google Maps API, 2nd Edition"')
 def step_impl(context):
     driver = context.driver  # type: WebDriver
+
+
     titles = [el.text for el in driver.find_elements_by_id("title")]
     ok_(titles.index("Google Maps API, 2nd Edition") >= 0)
