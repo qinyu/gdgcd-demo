@@ -15,21 +15,20 @@ import org.gdgcd.demo.BooksApplication;
 import org.gdgcd.demo.R;
 import org.gdgcd.demo.SearchEngine;
 import org.gdgcd.demo.domain.Book;
-
-import java.util.concurrent.TimeUnit;
+import org.gdgcd.demo.viewmodel.BooksViewModel;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import rx.Subscriber;
+import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-import rx.subjects.PublishSubject;
 
 
 public class BooksActivity extends AppCompatActivity {
 
+    private BooksViewModel booksViewModel;
     @InjectView(android.R.id.list)
     RecyclerView booksListView;
 
@@ -39,67 +38,62 @@ public class BooksActivity extends AppCompatActivity {
 
     @InjectView(R.id.search)
     SearchView searchView;
-    private PublishSubject<String> subject = PublishSubject.create();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUpUI();
+        booksViewModel = new BooksViewModel(((BooksApplication) getApplication()).getObjectGraph().get(SearchEngine.class));
     }
-
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        bindSearchView();
+        bindSearchResult();
+    }
 
+    private void bindSearchResult() {
+        querySubscription = booksViewModel.getBooksObservable()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Observable<Book>>() {
+                    @Override
+                    public void call(Observable<Book> bookObservable) {
+                        loadBooks(bookObservable);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e("Books", "search error", throwable);
+                    }
+                });
+
+    }
+
+    private void bindSearchView() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.d("qinyu", "onQueryTextSubmit " + query);
-
-                subject.onNext(query);
+                booksViewModel.submitKeyword(query);
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.d("qinyu", "onQueryTextChange " + newText);
-
-                subject.onNext(newText);
+                booksViewModel.submitKeyword(newText);
                 return true;
             }
         });
-
-        final SearchEngine searchEngine = ((BooksApplication) getApplication()).getObjectGraph().get(SearchEngine.class);
-
-        querySubscription = subject.debounce(1000, TimeUnit.MILLISECONDS)
-                .distinctUntilChanged()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-                        loadBooks(s, searchEngine);
-                    }
-                });
     }
 
-    void loadBooks(String query, SearchEngine searchEngine) {
+    void loadBooks(Observable<Book> bookObservable) {
+        booksListAdapter = new BooksAdapter();
+        booksListView.setAdapter(booksListAdapter);
+
         if (booksSubscription != null) {
             booksSubscription.unsubscribe();
         }
-        booksListAdapter = new BooksAdapter();
-        booksListView.setAdapter(booksListAdapter);
-        booksSubscription = searchEngine.search(query)
+        booksSubscription = bookObservable
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
@@ -112,7 +106,7 @@ public class BooksActivity extends AppCompatActivity {
                         new Action1<Throwable>() {
                             @Override
                             public void call(Throwable throwable) {
-
+                                Log.e("Books", "search error", throwable);
                             }
                         }
                 );

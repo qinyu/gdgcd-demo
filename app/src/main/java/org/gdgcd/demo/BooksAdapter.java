@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import org.gdgcd.demo.domain.Book;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -17,10 +18,6 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> {
     public BooksAdapter() {
@@ -36,14 +33,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        Book book = books.get(position);
-        Picasso.with(viewHolder.context)
-                .load(book.imageUrl)
-                .tag(viewHolder.context.getApplicationContext())
-                .into(viewHolder.coverImage);
-        viewHolder.title.setText(book.title);
-
-        viewHolder.ratingSub.unsubscribe();
+        viewHolder.updateView(books.get(position));
     }
 
     @Override
@@ -57,23 +47,30 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         @InjectView(R.id.title)
         TextView title;
 
-        @InjectView(R.id.rating)
-        TextView rating;
-
         Context context;
-
-        Subscription ratingSub = Observable.empty().subscribe();
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
             context = itemView.getContext();
         }
+
+        void updateView(Book book) {
+            Picasso.with(context)
+                    .load(book.imageUrl)
+                    .into(coverImage);
+            title.setText(book.title);
+        }
     }
 
     public void append(Book book) {
         int position = this.books.size();
         this.books.add(book);
+        notifyInsert(position);
+    }
+
+    @VisibleForTesting
+    public void notifyInsert(int position) {
         notifyItemInserted(position);
     }
 
