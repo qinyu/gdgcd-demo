@@ -37,7 +37,7 @@ public class SearchEngineTest {
 
     @Mock
     private Observer<Book> observer;
-    private TestSubscriber<Book> testSubscriber;
+    private TestSubscriber testSubscriber;
 
     @Module(injects = {SearchEngine.class, SearchEngineTest.class}, overrides = true)
     static class TestModule {
@@ -54,21 +54,21 @@ public class SearchEngineTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        testSubscriber = new TestSubscriber(observer);
+        testSubscriber = new TestSubscriber<>(observer);
 
         ObjectGraph objectGraph = ObjectGraph.create(new TestModule());
         objectGraph.inject(this);
         searchEngine = objectGraph.get(SearchEngine.class);
 
         proGAE = new BookMeta();
-        proGAE.setTitle("Programming Google App Engine");
+        proGAE.title = "Programming Google App Engine";
         gmap2nd = new BookMeta();
-        gmap2nd.setTitle("Google Maps API, 2nd Edition");
-        gmap2nd.setDescription("");
+        gmap2nd.title = "Google Maps API, 2nd Edition";
+        gmap2nd.description = "";
 
         bookMetaEnvelope = new BookMetaEnvelope();
-        bookMetaEnvelope.setBooks(Arrays.asList(proGAE, gmap2nd));
-        bookMetaEnvelope.setError("0");
+        bookMetaEnvelope.bookList = Arrays.asList(proGAE, gmap2nd);
+        bookMetaEnvelope.errorNo = "0";
     }
 
     @Test

@@ -20,7 +20,7 @@ public class SearchEngine {
                 .flatMap(new Func1<BookMetaEnvelope, Observable<BookMeta>>() {
                     @Override
                     public Observable<BookMeta> call(BookMetaEnvelope bookMetaEnvelope) {
-                        return Observable.from(bookMetaEnvelope.getBooks());
+                        return Observable.from(bookMetaEnvelope.bookList);
                     }
                 })
                 .map(new Func1<BookMeta, Book>() {
@@ -33,9 +33,9 @@ public class SearchEngine {
 
     static Book buildBook(BookMeta bookMeta) {
         Book book = new Book();
-        book.title = bookMeta.getTitle().trim();
-        book.imageUrl = bookMeta.getImage();
-        book.description = bookMeta.getDescription();
+        book.title = bookMeta.title.trim();
+        book.imageUrl = bookMeta.imageUrl;
+        book.description = bookMeta.description;
         return book;
     }
 

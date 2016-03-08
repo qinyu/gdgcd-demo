@@ -1,15 +1,11 @@
 package org.gdgcd.demo.service;
 
-import retrofit.http.GET;
-import retrofit.http.Path;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
 import rx.Observable;
 
 public interface BookService {
-    @GET("/search/{query}")
-    public Observable<BookMetaEnvelope> getBooks(@Path("query") String query);
-
-
-    @GET("/search/{query}")
-    public BookMetaEnvelope getSync(@Path("query") String query);
+    @GET("search/{query}")
+    Observable<BookMetaEnvelope> getBooks(@Path("query") String query);
 }
 
