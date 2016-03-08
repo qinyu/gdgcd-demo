@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+ext.guavaVersion = '19.0'
+
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.2'
@@ -65,10 +67,14 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile "io.reactivex:rxandroid:${rxVersion}"
     compile "io.reactivex:rxjava:${rxVersion}"
+    compile "com.google.guava:guava:${guavaVersion}"
 
     compile project(':book-model')
+
     testCompile "org.mockito:mockito-core:${mockitoVersion}"
     testCompile "junit:junit:${junitVersion}"
+    testCompile "org.robolectric:robolectric:3.1-SNAPSHOT"
+    testCompile "com.google.guava:guava:${guavaVersion}"
 
 }
 
