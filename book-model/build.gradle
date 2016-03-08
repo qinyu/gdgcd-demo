@@ -4,21 +4,22 @@ test {
     outputs.upToDateWhen { false }
 }
 
+ext.retrofitVersion='1.9.0'
+ext.daggerVersion='1.2.2'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.squareup.retrofit:converter-jackson:1.9.0'
+    compile "com.squareup.retrofit:retrofit:${retrofitVersion}"
+    compile "com.squareup.retrofit:converter-jackson:${retrofitVersion}"
 
-    compile 'io.reactivex:rxjava:1.0.14'
+    compile "io.reactivex:rxjava:${rxVersion}"
 
-    compile 'com.squareup.dagger:dagger:1.2.2'
-    compile 'com.squareup.dagger:dagger-compiler:1.2.2'
-    testCompile 'junit:junit:4.12-beta-3'
-    testCompile 'org.mockito:mockito-all:1.10.8'
+    compile "com.squareup.dagger:dagger:${daggerVersion}"
+    compile "com.squareup.dagger:dagger-compiler:${daggerVersion}"
+    testCompile "junit:junit:${junitVersion}"
+    testCompile "org.mockito:mockito-core:${mockitoVersion}"
 }
-repositories {
-    mavenCentral()
-}
+
 
 
 
