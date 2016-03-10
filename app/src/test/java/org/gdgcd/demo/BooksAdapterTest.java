@@ -9,11 +9,11 @@ import org.robolectric.annotation.Config;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class)
@@ -29,19 +29,16 @@ public class BooksAdapterTest {
 
     @Test
     public void should_notify_inserting_at_end_of_list_if_appending_book() {
+        spyAdapter.append(new Book());
+        then(spyAdapter).should().notifyInsert(0);
 
         spyAdapter.append(new Book());
-        verify(spyAdapter).notifyInsert(0);
-
-        spyAdapter.append(new Book());
-        verify(spyAdapter).notifyInsert(1);
+        then(spyAdapter).should().notifyInsert(1);
     }
 
 
     @Test
     public void should_size_of_books_as_count() {
-
-
         spyAdapter.append(new Book());
         assertThat(spyAdapter.getItemCount(), is(1));
 
@@ -59,10 +56,10 @@ public class BooksAdapterTest {
         final BooksAdapter.ViewHolder mockHolder = mock(BooksAdapter.ViewHolder.class);
 
         spyAdapter.onBindViewHolder(mockHolder, 0);
-        verify(mockHolder).updateView(book0);
+        then(mockHolder).should().updateView(book0);
 
         spyAdapter.onBindViewHolder(mockHolder, 1);
-        verify(mockHolder).updateView(book1);
+        then(mockHolder).should().updateView(book1);
     }
 
 

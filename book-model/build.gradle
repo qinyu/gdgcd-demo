@@ -21,6 +21,8 @@ dependencies {
     compile "com.squareup.dagger:dagger-compiler:${daggerVersion}"
     testCompile "junit:junit:${junitVersion}"
     testCompile "org.mockito:mockito-core:${mockitoVersion}"
+    testCompile "com.squareup.retrofit2:retrofit-mock:${retrofitVersion}"
+
 }
 
 
