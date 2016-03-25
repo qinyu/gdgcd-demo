@@ -1,4 +1,4 @@
-from appium.webdriver.webdriver import WebDriver
+∫from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 
 from behave import given, then, when
@@ -18,18 +18,14 @@ def step_impl(context: runner.Context):
 def step_impl(context: runner.Context):
     driver = context.driver  # type: WebDriver
 
-
-
     search = driver.find_element_by_id("search")
     search.click()
     search.send_keys("google")
 
-
-
-    def xx(driver):
+    def title_is_visible(driver):
         return driver.find_elements_by_id("title")
 
-    els = WebDriverWait(driver, 5).until(xx)
+    els = WebDriverWait(driver, 5).until(title_is_visible)
 
     driver.implicitly_wait(5)
     # els = driver.find_elements_by_id("title")

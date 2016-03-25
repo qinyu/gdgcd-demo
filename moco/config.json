@@ -1,10 +1,8 @@
-[
-  {
+[{
     "request": {
-      "uri": "/search/google"
+        "uri": "/search/google"
     },
     "response": {
-      "file": "book/book.json"
+        "file": "book/book.json"
     }
-  }
-]
+}]

@@ -12,6 +12,8 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     productFlavors {
@@ -50,6 +52,9 @@ android {
         exclude 'META-INF/NOTICE'
     }
 
+    dexOptions {
+        incremental true
+    }
 }
 
 repositories {
@@ -68,14 +73,15 @@ dependencies {
     compile "io.reactivex:rxandroid:${rxVersion}"
     compile "io.reactivex:rxjava:${rxVersion}"
     compile "com.google.guava:guava:${guavaVersion}"
-
     compile project(':book-model')
-
     testCompile "org.mockito:mockito-core:${mockitoVersion}"
     testCompile "junit:junit:${junitVersion}"
-    testCompile "org.robolectric:robolectric:3.1-SNAPSHOT"
+    testCompile 'org.robolectric:robolectric:3.1-SNAPSHOT'
     testCompile "com.google.guava:guava:${guavaVersion}"
-
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.squareup:javawriter:2.5.0'
+    androidTestCompile 'com.android.support:support-annotations:23.2.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
 }
 
 

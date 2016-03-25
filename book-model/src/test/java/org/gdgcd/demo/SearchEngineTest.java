@@ -83,9 +83,9 @@ public class SearchEngineTest {
         given(bookService.getBooks(anyString())).willReturn(Observable.just(bookMetaEnvelope));
 
         searchEngine.search("google").subscribe(testSubscriber);
-        testSubscriber.awaitTerminalEvent();
 
         then(observer).should(times(2)).onNext(any(Book.class));
         assertThat(testSubscriber.getOnNextEvents().size(), is(2));
+        testSubscriber.assertTerminalEvent();
     }
 }

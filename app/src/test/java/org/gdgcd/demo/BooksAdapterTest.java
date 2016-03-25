@@ -1,5 +1,8 @@
 package org.gdgcd.demo;
 
+import android.content.Intent;
+import android.text.TextUtils;
+
 import org.gdgcd.demo.domain.Book;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +12,7 @@ import org.robolectric.annotation.Config;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.doNothing;
@@ -36,7 +40,6 @@ public class BooksAdapterTest {
         then(spyAdapter).should().notifyInsert(1);
     }
 
-
     @Test
     public void should_size_of_books_as_count() {
         spyAdapter.append(new Book());
@@ -53,13 +56,25 @@ public class BooksAdapterTest {
         spyAdapter.append(book0);
         spyAdapter.append(book1);
 
-        final BooksAdapter.ViewHolder mockHolder = mock(BooksAdapter.ViewHolder.class);
+        final BookViewHolder mockHolder = mock(BookViewHolder.class);
 
         spyAdapter.onBindViewHolder(mockHolder, 0);
         then(mockHolder).should().updateView(book0);
 
         spyAdapter.onBindViewHolder(mockHolder, 1);
         then(mockHolder).should().updateView(book1);
+    }
+
+    @Test
+    public void should_get_text_utils_work(){
+        assertThat(TextUtils.isEmpty(""), is(true));
+        assertThat(TextUtils.isEmpty("not empty"), is(false));
+    }
+
+    @Test
+    public void should_get_intent_work(){
+        assertThat(new Intent(), is(notNullValue()));
+        assertThat(new Intent().putExtra("test", false).getBooleanExtra("test", true), is(false));
     }
 
 
