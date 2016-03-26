@@ -33,5 +33,5 @@ screenshot_*.png
 /test_servers/
 
 screenshots/
-build/
+.gradletasknamecache
 

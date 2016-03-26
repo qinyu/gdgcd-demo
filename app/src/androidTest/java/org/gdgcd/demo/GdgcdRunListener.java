@@ -15,12 +15,13 @@ public class GdgcdRunListener extends RunListener {
     @Override
     public void testRunStarted(Description description) throws Exception {
         super.testRunStarted(description);
-
+        System.out.print("Started!");
     }
 
     @Override
     public void testRunFinished(Result result) throws Exception {
         super.testRunFinished(result);
+        System.out.print("Ended!");
     }
 
 }
