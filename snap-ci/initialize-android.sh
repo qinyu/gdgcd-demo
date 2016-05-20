@@ -9,18 +9,18 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
 if [ ! -e ${INITIALIZATION_FILE} ]; then
   # fetch and initialize $ANDROID_HOME
   download-android
+  android list sdk --all
   # Use the latest android sdk tools
   echo y | android update sdk --no-ui --filter platform-tool > /dev/null
   echo y | android update sdk --no-ui --filter tool > /dev/null
 
   # The BuildTools version used by your project
-  echo y | android update sdk --no-ui --filter build-tools-21.1.1 --all > /dev/null
-  echo y | android update sdk --no-ui --filter build-tools-22.0.1 --all > /dev/null
+  echo y | android update sdk --no-ui --filter build-tools-23.0.2 --all > /dev/null
 
 
   # The SDK version used to compile your project
   echo y | android update sdk --no-ui --filter android-21> /dev/null
-  echo y | android update sdk --no-ui --filter android-22> /dev/null
+  echo y | android update sdk --no-ui --filter android-23> /dev/null
 
   # uncomment to install the Extra/Android Support Library
   echo y | android update sdk --no-ui --filter extra --all > /dev/null
