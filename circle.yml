@@ -1,6 +1,6 @@
 machine:
   java:
-    version: 1.8.0_40
+    version: oraclejdk8
 
 dependencies:
   pre:
