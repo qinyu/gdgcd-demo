@@ -10,8 +10,8 @@ if [ ! -e ${INITIALIZATION_FILE} ]; then
   # fetch and initialize $ANDROID_HOME
   download-android
   # Use the latest android sdk tools
-  echo y | android update sdk --no-ui --all -s --filter tools-preview
-  echo y | android update sdk --no-ui --all -s --filter platform-tools-preview,build-tools-24.0.0-preview,android-N
+  echo y | android update sdk --no-ui --all -s --filter tools
+  echo y | android update sdk --no-ui --all -s --filter platform-tools,build-tools-23.0.2,android-23
   echo y | android update sdk --no-ui --all -s --filter extra-android-support,extra-android-m2repository
 
   # Specify at least one system image if you want to run emulator tests

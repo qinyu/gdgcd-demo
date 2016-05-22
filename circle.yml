@@ -1,12 +1,15 @@
 machine:
   java:
     version: oraclejdk8
+  python:
+    version: 3.5.1
 
 dependencies:
   pre:
-    - echo y | android update sdk --no-ui --all -s --filter tools-preview
-    - echo y | android update sdk --no-ui --all -s --filter platform-tools-preview,build-tools-24.0.0-preview,android-N
+    - echo y | android update sdk --no-ui --all -s --filter tools
+    - echo y | android update sdk --no-ui --all -s --filter platform-tools,build-tools-23.0.2,android-23
     - echo y | android update sdk --no-ui --all -s --filter extra-android-support,extra-android-m2repository
 test:
   override:
-    - ./gradlew assembleProductDebug
+    - ./gradlew testMockDebug
+    - cp -r app/build/test-results/mockDebug/* $CIRCLE_TEST_REPORTS
