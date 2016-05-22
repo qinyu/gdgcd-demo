@@ -1,8 +1,8 @@
 machine:
   java:
     version: oraclejdk8
-  python:
-    version: 3.5.1
+  # python:
+  # version: 3.5.1
 
 dependencies:
   pre:
