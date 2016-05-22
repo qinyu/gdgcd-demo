@@ -1,3 +1,6 @@
+machine:
+  java:
+    version: jdk1.8.0
 test:
   override:
     - ./gradlew assembleProductDebug
