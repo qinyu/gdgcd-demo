@@ -3,13 +3,17 @@ apply plugin: 'com.android.application'
 ext.guavaVersion = '19.0'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    compileSdkVersion "android-N"
+    buildToolsVersion '24.0.0-rc4'
 
     defaultConfig {
+        jackOptions {
+            enabled false
+        }
+
         applicationId "org.gdgcd.demo"
         minSdkVersion 17
-        targetSdkVersion 23
+        targetSdkVersion 'N'
         versionCode 1
         versionName "1.0"
 
@@ -53,10 +57,6 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
     }
-
-    dexOptions {
-        incremental true
-    }
 }
 
 repositories {
@@ -82,7 +82,7 @@ dependencies {
     testCompile "com.google.guava:guava:${guavaVersion}"
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.squareup:javawriter:2.5.0'
-    androidTestCompile 'com.android.support:support-annotations:23.2.1'
+    androidTestCompile "com.android.support:support-annotations:${supportVersion}"
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
 }
 

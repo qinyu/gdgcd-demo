@@ -6,15 +6,15 @@ import os
 from selenium.common.exceptions import WebDriverException
 
 PATH = lambda p: os.path.abspath(
-        os.path.join(os.path.dirname(__file__), p)
+    os.path.join(os.path.dirname(__file__), p)
 )
 
 desired_caps = {
     'platformName': 'Android',
     'app': PATH(
-            '../app/build/outputs/apk/app-mock-debug.apk'
+        '../app/build/outputs/apk/app-mock-debug.apk'
     ),
-    'deviceName': "192.168.58.101:5555"
+    'deviceName': "192.168.58.101:5555",
 }
 
 

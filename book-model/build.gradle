@@ -4,8 +4,11 @@ test {
     outputs.upToDateWhen { false }
 }
 
-ext.retrofitVersion='2.0.0-beta4'
-ext.daggerVersion='1.2.2'
+ext.retrofitVersion = '2.0.0-beta4'
+ext.daggerVersion = '1.2.2'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
