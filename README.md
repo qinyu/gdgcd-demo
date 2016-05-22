@@ -1,6 +1,6 @@
 gdgcd-demo
 ==========
-[![Build Status](https://snap-ci.com/qinyu/gdgcd-demo/branch/master/build_image)](https://snap-ci.com/qinyu/gdgcd-demo/branch/master)
+[![CircleCI](https://circleci.com/gh/qinyu/gdgcd-demo.svg?style=svg)](https://circleci.com/gh/qinyu/gdgcd-demo) [![Build Status](https://snap-ci.com/qinyu/gdgcd-demo/branch/master/build_image)](https://snap-ci.com/qinyu/gdgcd-demo/branch/master)
 
 Demo of uinitest and calabash for android
 
