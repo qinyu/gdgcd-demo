@@ -1,6 +1,6 @@
 machine:
   java:
-    version: jdk1.8.0
+    version: 1.8.0_40
 
 dependencies:
   pre:
