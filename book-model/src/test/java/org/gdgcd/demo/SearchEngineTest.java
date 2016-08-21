@@ -80,11 +80,15 @@ public class SearchEngineTest {
 
     @Test
     public void should_append_all_books_in_envelope() {
-        given(bookService.getBooks(anyString())).willReturn(Observable.just(bookMetaEnvelope));
+        given(bookService.getBooks(anyString()))
+                .willReturn(Observable.just(bookMetaEnvelope));
 
         searchEngine.search("google").subscribe(testSubscriber);
 
-        then(observer).should(times(2)).onNext(any(Book.class));
+        then(observer)
+                .should(times(2))
+                .onNext(any(Book.class));
+
         assertThat(testSubscriber.getOnNextEvents().size(), is(2));
         testSubscriber.assertTerminalEvent();
     }
