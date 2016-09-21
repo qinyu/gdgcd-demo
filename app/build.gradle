@@ -4,7 +4,7 @@ ext.guavaVersion = '19.0'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '23.0.3'
+    buildToolsVersion '24.0.2'
 
     defaultConfig {
         jackOptions {
@@ -13,7 +13,7 @@ android {
 
         applicationId "org.gdgcd.demo"
         minSdkVersion 17
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
 

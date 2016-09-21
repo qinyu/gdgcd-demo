@@ -14,7 +14,7 @@ desired_caps = {
     'app': PATH(
         '../app/build/outputs/apk/app-mock-debug.apk'
     ),
-    'deviceName': "192.168.58.101:5555",
+    'deviceName': "192.168.58.102:5555",
 }
 
 
