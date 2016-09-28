@@ -1,11 +1,19 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 ext.guavaVersion = '19.0'
 
 android {
+    signingConfigs {
+        mockRelease {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('/Users/yqin/.android/debug.keystore')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion '24.0.2'
-
     defaultConfig {
         jackOptions {
             enabled false
@@ -21,11 +29,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        testInstrumentationRunnerArgument "listener", "org.gdgcd.demo.GdgcdRunListener"
     }
-
     productFlavors {
         mock {
-            buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://192.168.58.1:9000/"'
-            buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://192.168.58.1:9000/"'
+            buildConfigField "String", "BOOK_SERVICE_ENDPOINT", '"http://10.0.2.2:9000/"'
+            buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://10.0.2.2:9000/"'
         }
 
         workShop {
@@ -38,7 +45,6 @@ android {
             buildConfigField "String", "REVIEW_SERVICE_ENDPOINT", '"http://www.goodreads.com/book/"'
         }
     }
-
     lintOptions {
         disable 'InvalidPackage'
         checkReleaseBuilds false
@@ -46,16 +52,22 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
-
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.mockRelease
+        }
     }
 }
 
@@ -63,6 +75,8 @@ repositories {
     maven {
         url "https://oss.sonatype.org/content/repositories/snapshots"
     }
+    mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
@@ -85,6 +99,23 @@ dependencies {
     androidTestCompile 'com.squareup:javawriter:2.5.0'
     androidTestCompile "com.android.support:support-annotations:${supportVersion}"
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+
+    releaseCompile 'com.ionicframework.starter:android:1.0:release@aar'
+    releaseCompile 'com.ionicframework.starter:CordovaLib:1.0:release@aar'
+
+    debugCompile 'com.ionicframework.starter:android:1.0:debug@aar'
+    debugCompile 'com.ionicframework.starter:CordovaLib:1.0:debug@aar'
+}
+buildscript {
+    ext.kotlin_version = '1.0.3'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
 
 

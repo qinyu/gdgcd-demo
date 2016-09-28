@@ -1,5 +1,7 @@
 package org.gdgcd.demo.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +45,8 @@ public class BooksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUpUI();
+        SharedPreferences preferences = getSharedPreferences("lang", Context.MODE_PRIVATE);
+        preferences.edit().putString("lang", "zh").apply();
         booksViewModel = new BooksViewModel(((BooksApplication) getApplication()).getObjectGraph().get(SearchEngine.class));
     }
 

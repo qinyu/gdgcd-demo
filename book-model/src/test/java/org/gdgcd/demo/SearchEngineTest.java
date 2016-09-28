@@ -68,14 +68,14 @@ public class SearchEngineTest {
         searchEngine = objectGraph.get(SearchEngine.class);
 
         proGAE = new BookMeta();
-        proGAE.title = "Programming Google App Engine";
+        proGAE.setTitle("Programming Google App Engine");
         gmap2nd = new BookMeta();
-        gmap2nd.title = "Google Maps API, 2nd Edition";
-        gmap2nd.description = "";
+        gmap2nd.setTitle("Google Maps API, 2nd Edition");
+        gmap2nd.setDescription("");
 
         bookMetaEnvelope = new BookMetaEnvelope();
-        bookMetaEnvelope.bookList = Arrays.asList(proGAE, gmap2nd);
-        bookMetaEnvelope.errorNo = "0";
+        bookMetaEnvelope.setBookList(Arrays.asList(proGAE, gmap2nd));
+        bookMetaEnvelope.setErrorNo("0");
     }
 
     @Test
