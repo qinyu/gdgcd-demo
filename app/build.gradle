@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 ext.guavaVersion = '19.0'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.2'
+    compileSdkVersion 25
+    buildToolsVersion '24.0.3'
 
     defaultConfig {
         jackOptions {
@@ -13,7 +13,7 @@ android {
 
         applicationId "org.gdgcd.demo"
         minSdkVersion 17
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 
@@ -45,6 +45,10 @@ android {
         // Or, if you prefer, you can continue to check for errors in release builds,
         // but continue the build even when errors are found:
         abortOnError false
+        // set to true to turn off analysis progress reporting by lint
+        quiet true
+        // if true, only report errors
+        ignoreWarnings true
     }
 
     compileOptions {
